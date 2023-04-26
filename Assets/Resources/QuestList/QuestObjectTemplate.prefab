@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5303439047313898203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5303439047313898196}
+  - component: {fileID: 5303439047313898197}
+  - component: {fileID: 5303439047313898198}
+  m_Layer: 0
+  m_Name: QuestObjectTemplate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5303439047313898196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303439047313898203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5303439047313898197
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303439047313898203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5303439047313898198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303439047313898203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dedabe48b2bfb6499f7d9542d622a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestType:
+    quest: 0
+  QuestStartScript:
+  - "\uC774 \uADFC\uCC98\uC5D0 \uC2AC\uB77C\uC784\uC774 \uB108\uBB34 \uB9CE\uC544\uC84C\uC5B4\uC694"
+  - "\uBD80\uB514 \uC2AC\uB77C\uC784\uC744 \uD1F4\uCE58\uD574\uC8FC\uC2DC\uACA0\uC5B4\uC694?"
+  - "\uC218\uB77D\uD558\uACA0\uC2B5\uB2C8\uAE4C?         (space:yes, esc:no)"
+  QuestCompleteScript:
+  - "\uC774\uAC78\uB85C \uD55C\uC2DC\uB984 \uB193\uC744 \uC218 \uC788\uACA0\uC5B4\uC694!"
+  - "\uC815\uB9D0 \uAC10\uC0AC\uD569\uB2C8\uB2E4."
+  QuestScriptCG: {fileID: 0}
+  QuestReading: 0
+  QuestProgress: 0
+  QuestComplete: 0
+  QuestEnd: 0
+  QuestTextNumber: 0
+  MonsterKill: 0
+  QuestObjectList: {fileID: 0}
