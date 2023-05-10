@@ -1331,7 +1331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Journey
 --- !u!222 &1630758320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1369,6 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75cb7bd5db539974f84773dcf6175acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alphavalue: 0
 --- !u!4 &1990993833
 Transform:
   m_ObjectHideFlags: 0

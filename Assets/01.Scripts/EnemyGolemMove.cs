@@ -7,7 +7,6 @@ public class EnemyGolemMove : MonoBehaviour
 {
     private Transform enemytr;
     private Transform playertr;
-    private NavMeshAgent enemynav;
     private Animator enemyani;
     private Transform throwrockpoint;
     public Transform rockfirepoint;
@@ -22,7 +21,6 @@ public class EnemyGolemMove : MonoBehaviour
     {
         enemytr = gameObject.GetComponent<Transform>();
         playertr = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        enemynav = gameObject.GetComponent<NavMeshAgent>();
         enemyani = gameObject.GetComponent<Animator>();
         rock = Resources.Load<GameObject>("GolemRock");
     }
@@ -78,7 +76,7 @@ public class EnemyGolemMove : MonoBehaviour
     {
         if (playerdist <= 3)
         {
-            playertr.GetChild(0).GetComponent<PlayerHealth>().OnDamage(60f);
+            playertr.GetChild(0).GetComponent<PlayerHealth>().OnDamage(130f);
         }
         Debug.Log("meleeattack");
     }

@@ -9,7 +9,7 @@ public class EnemyDamageValue : MonoBehaviour
     
     void Start()
     {
-        Player = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        Player = GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<PlayerHealth>();
         attackcolider = gameObject.GetComponent<BoxCollider>();
     }
 
@@ -23,7 +23,7 @@ public class EnemyDamageValue : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Player.OnDamage(100f);
+            Player.OnDamage(50f);
         }
     }
 }

@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
         PlayerTr = this.transform.GetChild(0).GetComponent<Transform>();
         CamArm = this.transform.GetChild(1).GetComponent<Transform>();
         Playerani = PlayerTr.transform.GetComponent<Animator>();
-        phealth = this.transform.GetComponent<PlayerHealth>();
+        phealth = this.transform.GetChild(0).GetComponent<PlayerHealth>();
     }
 
     void FixedUpdate()

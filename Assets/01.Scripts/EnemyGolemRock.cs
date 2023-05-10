@@ -24,7 +24,7 @@ public class EnemyGolemRock : MonoBehaviour
         var playerhealth = other.GetComponent<PlayerHealth>();
         if(playerhealth != null)
         {
-            playerhealth.OnDamage(40f);
+            playerhealth.OnDamage(100f);
             Debug.Log("givedamage");
         }
         Destroy(gameObject);

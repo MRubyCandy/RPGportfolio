@@ -64,10 +64,12 @@ public class SlotItem : MonoBehaviour
                         case ItemData.itemtype.RedPotion:
                             Debug.Log("hp up");
                             playerHealth.PlayerHP = Mathf.Clamp(playerHealth.PlayerHP += 50f, 0, GameManager.gameManager.GameData.HP);
+                            Destroy(inslotitem.gameObject);
                             break;
                         case ItemData.itemtype.BluePotion:
                             Debug.Log("mp up");
                             playerHealth.PlayerMP = Mathf.Clamp(playerHealth.PlayerMP += 50f, 0, GameManager.gameManager.GameData.MP);
+                            Destroy(inslotitem.gameObject);
                             break;
                     }
                 }

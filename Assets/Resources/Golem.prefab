@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8380034350441795550}
   - component: {fileID: 8380034350441795549}
-  - component: {fileID: 889436831}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -49,20 +48,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!136 &889436831
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8380034350441795548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.93, z: 0}
 --- !u!1001 &8380034351349423012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,9 +127,15 @@ PrefabInstance:
     - target: {fileID: 8380034350764929542, guid: c6cfc32748fb5004aa11a1be074b5c58,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8380034350764929543, guid: c6cfc32748fb5004aa11a1be074b5c58,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8380034350764929543, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6cfc32748fb5004aa11a1be074b5c58, type: 3}
 --- !u!4 &8380034350279294174 stripped
 Transform:
