@@ -7,20 +7,20 @@ using DataInfo;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _gameManager;
-    public static GameManager gameManager
-    {
-        get
-        {
-            if(!_gameManager)
-            {
-                _gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
-                if (_gameManager == null)
-                    Debug.Log("no singleton obj");
-            }
-            return _gameManager;
-        }
-    }
+    //private static GameManager _gameManager;
+    public static GameManager gameManager;
+    //{
+    //    get
+    //    {
+    //        if (!_gameManager)
+    //        {
+    //            _gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
+    //            if (_gameManager == null)
+    //                Debug.Log("no singleton obj");
+    //        }
+    //        return _gameManager;
+    //    }
+    //}
     public GameData GameData;
     private CanvasGroup SkillCG;
     private bool Skillopen = false;
@@ -44,17 +44,18 @@ public class GameManager : MonoBehaviour
     private Transform Weaponequit;
     private InvenItemicon equitWeapon;
     public float statdmg = 0;
-    private Image Padepanel;
-    private float padealpha = 1f;
     public bool isgameover = false;
+    private CanvasGroup MenuCG;
+    private bool Menucgopen = false;
+    private CanvasGroup DebugCG;
 
     private void Awake()
     {
-        if (_gameManager == null)
+        if (gameManager == null)
         {
-            _gameManager = this;
+            gameManager = this;
         }
-        else if (_gameManager != this)
+        else if (gameManager != this)
         {
             Destroy(gameObject);
         }
@@ -70,12 +71,12 @@ public class GameManager : MonoBehaviour
         QuestShowObjectCG = GameObject.Find("Panel-QuestObject").GetComponent<CanvasGroup>();
         moneytext = InventoryCG.transform.GetChild(2).GetChild(0).GetComponent<Text>();
         Weaponequit = GameObject.Find("Panel-Equit").transform.GetChild(0).GetComponent<Transform>();
-        cameraaudio = GameObject.FindWithTag("MainCamera").GetComponent<AudioSource>();
+        cameraaudio = GameObject.FindWithTag("SFXaudioCtrl").GetComponent<AudioSource>();
         menusfx = Resources.Load<AudioClip>("Uisfx/Menuopen");
-        Padepanel = GameObject.Find("Panel-Pade").GetComponent<Image>();
+        MenuCG = GameObject.Find("Panel-Menu").GetComponent<CanvasGroup>();
+        DebugCG = GameObject.Find("Panel-Debug").GetComponent<CanvasGroup>();
 
         isgameover = false;
-        StartCoroutine(padein());
         var invenlist = InventoryCG.transform.GetChild(1);
         if (invenlist != null)
         {
@@ -89,12 +90,10 @@ public class GameManager : MonoBehaviour
     {
         SkillOpen();
         InvenOpen();
+        MenuOpen();
         QuestShowObjectCtr();
         Getdropitem();
         equititemcheck();
-        gameoverpadeout();
-
-        Padepanel.color = new Color(0, 0, 0, padealpha);
 
         moneytext.text = string.Format("{0}", GameMoney.ToString()) + " Gold";
 
@@ -107,31 +106,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void gameoverpadeout()
-    {
-        if(isgameover)
-        {
-            if (padealpha <= 1)
-            {
-                Padepanel.color = new Color(0, 0, 0, padealpha);
-                padealpha += (Time.deltaTime * 1.3f);
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-        }
-    }
-    IEnumerator padein()
-    {
-        while (padealpha >= 0)
-        {
-            if (padealpha <= 0)
-                break;
-            yield return new WaitForSeconds(Time.deltaTime * 1.2f);
-            padealpha -= 0.015f;
-        }
-    }
 
     private void equititemcheck()
     {
@@ -176,7 +150,22 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    public void Debugopen(bool cgopen)
+    {
+        UICGonoff(DebugCG, cgopen);
+    }
+    private void MenuOpen()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            cameraaudio.PlayOneShot(menusfx);
+            if (!Menucgopen)
+                Menucgopen = true;
+            else
+                Menucgopen = false;
+            UICGonoff(MenuCG, Menucgopen);
+        }
+    }
     private void InvenOpen()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -186,7 +175,7 @@ public class GameManager : MonoBehaviour
                 Inventoryopen = true;
             else
                 Inventoryopen = false;
-            InventoryOnOff(Inventoryopen);
+            UICGonoff(InventoryCG, Inventoryopen);
         }
     }
 
@@ -199,21 +188,27 @@ public class GameManager : MonoBehaviour
                 Skillopen = true;
             else
                 Skillopen = false;
-            SkillCGOnOff(Skillopen);
+            UICGonoff(SkillCG, Skillopen);
         }
     }
 
-    private void SkillCGOnOff(bool IsOpen)
+    //private void SkillCGOnOff(bool IsOpen)
+    //{
+    //    SkillCG.alpha = (IsOpen) ? 1.0f : 0.0f;
+    //    SkillCG.interactable = IsOpen;
+    //    SkillCG.blocksRaycasts = IsOpen;
+    //}
+    //private void InventoryOnOff(bool IsOpen)
+    //{
+    //    InventoryCG.alpha = (IsOpen) ? 1.0f : 0.0f;
+    //    InventoryCG.interactable = IsOpen;
+    //    InventoryCG.blocksRaycasts = IsOpen;
+    //}
+    private void UICGonoff(CanvasGroup CG, bool IsOpen)
     {
-        SkillCG.alpha = (IsOpen) ? 1.0f : 0.0f;
-        SkillCG.interactable = IsOpen;
-        SkillCG.blocksRaycasts = IsOpen;
-    }
-    private void InventoryOnOff(bool IsOpen)
-    {
-        InventoryCG.alpha = (IsOpen) ? 1.0f : 0.0f;
-        InventoryCG.interactable = IsOpen;
-        InventoryCG.blocksRaycasts = IsOpen;
+        CG.alpha = (IsOpen) ? 1.0f : 0.0f;
+        CG.interactable = IsOpen;
+        CG.blocksRaycasts = IsOpen;
     }
     private void QuestShowObjectCtr()
     {

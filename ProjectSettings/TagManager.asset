@@ -11,6 +11,7 @@ TagManager:
   - WeaponItem
   - PotionItem
   - Weaponslot
+  - SFXaudioCtrl
   layers:
   - Default
   - TransparentFX
